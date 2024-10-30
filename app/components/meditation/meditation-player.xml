@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <GridLayout rows="*, auto">
+        <StackLayout row="0" class="p-6">
+            <Image src="{{ currentSession.imageUrl }}" class="w-full h-64 rounded-xl mb-6" />
+            <Label text="{{ currentSession.title }}" class="text-2xl font-bold mb-2" />
+            <Label text="{{ currentSession.author }}" class="text-gray-500 mb-4" />
+            <Label text="{{ currentSession.description }}" textWrap="true" class="mb-4" />
+            
+            <!-- Progress Bar -->
+            <GridLayout rows="auto" columns="auto, *, auto" class="mb-4">
+                <Label col="0" text="{{ currentTime }}" class="text-sm" />
+                <Progress col="1" value="{{ progress }}" maxValue="100" class="m-2" />
+                <Label col="2" text="{{ duration }}" class="text-sm" />
+            </GridLayout>
+        </StackLayout>
+
+        <!-- Player Controls -->
+        <GridLayout row="1" rows="auto" columns="*, auto, *" class="p-6 bg-gray-50">
+            <Button text="⏮" col="0" tap="{{ onPrevious }}" class="text-2xl" />
+            <Button text="{{ isPlaying ? '⏸' : '▶' }}" col="1" tap="{{ onPlayPause }}" class="text-3xl" />
+            <Button text="⏭" col="2" tap="{{ onNext }}" class="text-2xl" />
+        </GridLayout>
+    </GridLayout>
+</Page>

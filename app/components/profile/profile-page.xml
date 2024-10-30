@@ -1,0 +1,53 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Profile">
+        <ActionItem ios.position="right" android.position="actionBar" tap="{{ onSettings }}">
+            <Label text="⚙️" class="text-lg" />
+        </ActionItem>
+    </ActionBar>
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- User Info -->
+            <Image src="{{ userPhoto }}" class="w-24 h-24 rounded-full mx-auto mb-4" />
+            <Label text="{{ userName }}" class="text-2xl font-bold text-center mb-2" />
+            <Label text="{{ userEmail }}" class="text-gray-500 text-center mb-6" />
+
+            <!-- Stats -->
+            <GridLayout columns="*, *, *" class="mb-6">
+                <StackLayout col="0" class="text-center">
+                    <Label text="{{ totalMinutes }}" class="text-xl font-bold" />
+                    <Label text="Minutes" class="text-sm text-gray-500" />
+                </StackLayout>
+                <StackLayout col="1" class="text-center">
+                    <Label text="{{ streak }}" class="text-xl font-bold" />
+                    <Label text="Day Streak" class="text-sm text-gray-500" />
+                </StackLayout>
+                <StackLayout col="2" class="text-center">
+                    <Label text="{{ completedSessions }}" class="text-xl font-bold" />
+                    <Label text="Sessions" class="text-sm text-gray-500" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Recent Activity -->
+            <Label text="Recent Activity" class="text-xl font-bold mb-4" />
+            <ListView items="{{ recentActivity }}" height="200">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *" class="p-2">
+                        <Label col="0" text="{{ date }}" class="text-gray-500" />
+                        <Label col="1" text="{{ sessionName }}" class="ml-4" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Downloads -->
+            <Label text="Downloaded Content" class="text-xl font-bold mt-6 mb-4" />
+            <ListView items="{{ downloads }}" height="200">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="p-2">
+                        <Label col="0" text="{{ title }}" />
+                        <Button col="1" text="Delete" tap="{{ onDeleteDownload }}" class="text-red-500" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

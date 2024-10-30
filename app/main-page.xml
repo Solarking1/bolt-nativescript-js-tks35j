@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Mindful" icon="" />
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Featured Session -->
+            <Label text="Daily Calm" class="text-2xl font-bold mb-2" />
+            <Image src="~/images/meditation.jpg" class="w-full h-40 rounded-lg mb-4" />
+            
+            <!-- Player Controls -->
+            <GridLayout rows="auto" columns="*, auto, *" class="mb-6">
+                <Button text="⏮" col="0" tap="{{ onPrevious }}" class="text-2xl" />
+                <Button text="{{ isPlaying ? '⏸' : '▶' }}" col="1" tap="{{ onPlayPause }}" class="text-3xl" />
+                <Button text="⏭" col="2" tap="{{ onNext }}" class="text-2xl" />
+            </GridLayout>
+
+            <!-- Session Info -->
+            <Label text="{{ currentSession }}" class="text-lg text-center mb-2" />
+            <Label text="{{ duration }}" class="text-gray-500 text-center" />
+
+            <!-- Categories -->
+            <Label text="Categories" class="text-xl font-bold mt-6 mb-2" />
+            <WrapLayout>
+                <StackLayout class="bg-blue-100 p-4 rounded-lg m-1" tap="{{ onCategoryTap }}">
+                    <Label text="Sleep" class="text-center" />
+                </StackLayout>
+                <StackLayout class="bg-green-100 p-4 rounded-lg m-1" tap="{{ onCategoryTap }}">
+                    <Label text="Focus" class="text-center" />
+                </StackLayout>
+                <StackLayout class="bg-purple-100 p-4 rounded-lg m-1" tap="{{ onCategoryTap }}">
+                    <Label text="Anxiety" class="text-center" />
+                </StackLayout>
+            </WrapLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
